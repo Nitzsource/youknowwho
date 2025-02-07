@@ -64,10 +64,17 @@
             opacity: 0;
             transform: scale(0.5);
             transition: all 2s ease-in-out;
+            filter: drop-shadow(0px 0px 15px rgba(255, 0, 0, 0.5));
         }
         .bloom {
             opacity: 1;
             transform: scale(1);
+            animation: bloomEffect 2s ease-in-out;
+        }
+        @keyframes bloomEffect {
+            0% { transform: scale(0.5) rotate(-10deg); opacity: 0; }
+            50% { transform: scale(0.8) rotate(5deg); opacity: 0.7; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
         }
         .hidden-message {
             font-size: 20px;
