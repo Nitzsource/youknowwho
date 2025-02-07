@@ -6,16 +6,19 @@
     <title>🌹 A Special Surprise 🌹</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
         body {
             font-family: 'Poppins', sans-serif;
             text-align: center;
-            background: linear-gradient(to right, #ff9a9e, #fad0c4);
-            color: #fff;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            overflow: hidden;
         }
         .container {
             background: rgba(255, 255, 255, 0.2);
@@ -52,14 +55,19 @@
             background: #cc0000;
             transform: scale(1.1);
         }
-        img {
-            width: 200px;
-            height: auto;
-            animation: fadeIn 2s ease-in-out;
+        .rose-container {
+            position: relative;
+            display: inline-block;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .rose {
+            width: 150px;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 2s ease-in-out;
+        }
+        .bloom {
+            opacity: 1;
+            transform: scale(1);
         }
         .hidden-message {
             font-size: 20px;
@@ -72,6 +80,10 @@
             display: none;
             animation: fadeIn 2s ease-in-out;
         }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
@@ -81,16 +93,18 @@
         <div class="morse-code">.... . .-.. .-.. --- / -- -.-- / .-.. --- ...- . -.-.-- / - .... . / -. . -..- - / - .... .. -. --. / .. ... / .... .. -.. -.. . -. / .. -. / -.. .. --. .. - .- .-.. ._. --- ... . .-.-.-</div>
         <button onclick="showRose()">Click to Reveal the Rose 🌹</button>
         <br>
-        <img id="rose" class="hidden" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Red_rose.svg/2048px-Red_rose.svg.png" alt="Beautiful Red Rose">
+        <div class="rose-container">
+            <img id="rose" class="rose" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Single_red_rose_%28pixabay%29.png/480px-Single_red_rose_%28pixabay%29.png" alt="Beautiful Red Rose">
+        </div>
         <p id="hiddenMessage" class="hidden-message">You are the most beautiful rose in my life! 🌹💖</p>
     </div>
 
     <script>
         function showRose() {
-            document.getElementById("rose").classList.remove("hidden");
+            document.getElementById("rose").classList.add("bloom");
             setTimeout(() => {
                 document.getElementById("hiddenMessage").style.display = "block";
-            }, 2000);
+            }, 2500);
         }
     </script>
 </body>
