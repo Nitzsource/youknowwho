@@ -66,6 +66,13 @@
         .character.walk-in {
             left: 40%;
         }
+        .character.arm-move {
+            animation: armMove 2s ease-in-out infinite alternate;
+        }
+        @keyframes armMove {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(10deg); }
+        }
         .rose-container {
             position: relative;
             display: inline-block;
@@ -74,6 +81,11 @@
         }
         .rose-container.visible {
             opacity: 1;
+            animation: bounce 1.5s ease;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
         .hidden-message {
             font-size: 20px;
@@ -90,9 +102,22 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        .background-animate {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            animation: glow 6s infinite alternate;
+        }
+        @keyframes glow {
+            0% { background: rgba(255, 255, 255, 0.1); }
+            100% { background: rgba(255, 255, 255, 0.3); }
+        }
     </style>
 </head>
 <body>
+    <div class="background-animate"></div>
     <div class="container">
         <h1>🌹 Happy Rose Day, My Love! 🌹</h1>
         <p>There's a secret message hidden in Morse code. Can you decode it? ❤️</p>
@@ -108,9 +133,13 @@
 
     <script>
         function startAnimation() {
-            document.getElementById("character").classList.add("walk-in");
+            const character = document.getElementById("character");
+            character.classList.add("walk-in");
+            
             setTimeout(() => {
                 document.getElementById("roseContainer").classList.add("visible");
+                character.classList.add("arm-move");
+                
                 setTimeout(() => {
                     document.getElementById("hiddenMessage").style.display = "block";
                 }, 2000);
