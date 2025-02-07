@@ -111,9 +111,9 @@
         <div class="morse-code">.... . .-.. .-.. --- / -- -.-- / .-.. --- ...- . -.-.--</div>
         <button onclick="startAnimation()">Click to Reveal the Surprise 🎁</button>
         <br>
-        <img id="character" class="character" src="https://i.postimg.cc/BbfB5FTT/cartoon-boy.png" alt="Cute Character">
+        <img id="character" class="character" src="https://i.postimg.cc/L8bvFDZM/cc.jpg" alt="Cute Character">
         <div class="rose-container" id="roseContainer">
-            <img class="rose" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Single_red_rose_%28pixabay%29.png/480px-Single_red_rose_%28pixabay%29.png" alt="Beautiful Red Rose">
+            <img class="rose" src="https://i.postimg.cc/B6FfWtYJ/cr.jpg" alt="Beautiful Red Rose">
         </div>
         <p id="hiddenMessage" class="hidden-message">You are the most beautiful rose in my life! 🌹💖</p>
     </div>
