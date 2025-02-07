@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌹 A Special Surprise 🌹</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            backdrop-filter: blur(10px);
+        }
+        .morse-code {
+            font-weight: bold;
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            color: #333;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            background: #ff4d4d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: #cc0000;
+            transform: scale(1.1);
+        }
+        .character {
+            position: absolute;
+            left: -150px;
+            bottom: 50px;
+            width: 120px;
+            transition: all 3s ease-in-out;
+        }
+        .character.walk-in {
+            left: 40%;
+        }
+        .character.arm-move {
+            animation: armMove 2s ease-in-out infinite alternate;
+        }
+        @keyframes armMove {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(10deg); }
+        }
+        .rose-container {
+            position: relative;
+            display: inline-block;
+            opacity: 0;
+            transition: all 2s ease-in-out;
+        }
+        .rose-container.visible {
+            opacity: 1;
+            animation: bounce 1.5s ease;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .hidden-message {
+            font-size: 20px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            color: #333;
+            margin-top: 15px;
+            display: none;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌹 Happy Rose Day, My Love! 🌹</h1>
+        <p>There's a secret message hidden in Morse code. Can you decode it? ❤️</p>
+        <div class="morse-code">.... . .-.. .-.. --- / -- -.-- / .-.. --- ...- . -.-.--</div>
+        <button onclick="startAnimation()">Click to Reveal the Surprise 🎁</button>
+        <br>
+        <img id="character" class="character" src="https://i.postimg.cc/BbfB5FTT/cartoon-boy.png" alt="Cute Character">
+        <div class="rose-container" id="roseContainer">
+            <img class="rose" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Single_red_rose_%28pixabay%29.png/480px-Single_red_rose_%28pixabay%29.png" alt="Beautiful Red Rose">
+        </div>
+        <p id="hiddenMessage" class="hidden-message">You are the most beautiful rose in my life! 🌹💖</p>
+    </div>
+
+    <script>
+        function startAnimation() {
+            const character = document.getElementById("character");
+            character.classList.add("walk-in");
+            
+            setTimeout(() => {
+                document.getElementById("roseContainer").classList.add("visible");
+                character.classList.add("arm-move");
+                
+                setTimeout(() => {
+                    document.getElementById("hiddenMessage").style.display = "block";
+                }, 2000);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
