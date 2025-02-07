@@ -19,6 +19,7 @@
             align-items: center;
             height: 100vh;
             overflow: hidden;
+            position: relative;
         }
         .container {
             background: rgba(255, 255, 255, 0.2);
@@ -55,26 +56,24 @@
             background: #cc0000;
             transform: scale(1.1);
         }
+        .character {
+            position: absolute;
+            left: -150px;
+            bottom: 50px;
+            width: 120px;
+            transition: all 3s ease-in-out;
+        }
+        .character.walk-in {
+            left: 40%;
+        }
         .rose-container {
             position: relative;
             display: inline-block;
-        }
-        .rose {
-            width: 150px;
             opacity: 0;
-            transform: scale(0.5);
             transition: all 2s ease-in-out;
-            filter: drop-shadow(0px 0px 15px rgba(255, 0, 0, 0.5));
         }
-        .bloom {
+        .rose-container.visible {
             opacity: 1;
-            transform: scale(1);
-            animation: bloomEffect 2s ease-in-out;
-        }
-        @keyframes bloomEffect {
-            0% { transform: scale(0.5) rotate(-10deg); opacity: 0; }
-            50% { transform: scale(0.8) rotate(5deg); opacity: 0.7; }
-            100% { transform: scale(1) rotate(0deg); opacity: 1; }
         }
         .hidden-message {
             font-size: 20px;
@@ -98,20 +97,24 @@
         <h1>🌹 Happy Rose Day, My Love! 🌹</h1>
         <p>There's a secret message hidden in Morse code. Can you decode it? ❤️</p>
         <div class="morse-code">.... . .-.. .-.. --- / -- -.-- / .-.. --- ...- . -.-.-- / - .... . / -. . -..- - / - .... .. -. --. / .. ... / .... .. -.. -.. . -. / .. -. / -.. .. --. .. - .- .-.. ._. --- ... . .-.-.-</div>
-        <button onclick="showRose()">Click to Reveal the Rose 🌹</button>
+        <button onclick="startAnimation()">Click to Reveal the Surprise 🎁</button>
         <br>
-        <div class="rose-container">
-            <img id="rose" class="rose" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Single_red_rose_%28pixabay%29.png/480px-Single_red_rose_%28pixabay%29.png" alt="Beautiful Red Rose">
+        <img id="character" class="character" src="https://i.postimg.cc/BbfB5FTT/cartoon-boy.png" alt="Cute Character">
+        <div class="rose-container" id="roseContainer">
+            <img class="rose" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Single_red_rose_%28pixabay%29.png/480px-Single_red_rose_%28pixabay%29.png" alt="Beautiful Red Rose">
         </div>
         <p id="hiddenMessage" class="hidden-message">You are the most beautiful rose in my life! 🌹💖</p>
     </div>
 
     <script>
-        function showRose() {
-            document.getElementById("rose").classList.add("bloom");
+        function startAnimation() {
+            document.getElementById("character").classList.add("walk-in");
             setTimeout(() => {
-                document.getElementById("hiddenMessage").style.display = "block";
-            }, 2500);
+                document.getElementById("roseContainer").classList.add("visible");
+                setTimeout(() => {
+                    document.getElementById("hiddenMessage").style.display = "block";
+                }, 2000);
+            }, 3000);
         }
     </script>
 </body>
