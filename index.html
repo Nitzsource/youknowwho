@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌹 A Special Surprise 🌹</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🌹 Happy Rose Day, My Love! 🌹</h1>
+        <p>There's a secret message hidden in Morse code. Can you decode it? ❤️</p>
+        <div class="morse-code">.... . .-.. .-.. --- / -- -.-- / .-.. --- ...- . -.-.-- / - .... . / -. . -..- - / - .... .. -. --. / .. ... / .... .. -.. -.. . -. / .. -. / -.. .. --. .. - .- .-.. ._. --- ... . .-.-.-</div>
+        <button onclick="showRose()">Click to Reveal the Rose 🌹</button>
+        <pre id="rose" class="hidden">
+        @@@@ @@@  
+       @@@@@ @@@  
+       @@@@@@@@  
+        @@@@@@  
+         @@@  
+          @  
+        </pre>
+    </div>
+
+    <script>
+        function showRose() {
+            document.getElementById("rose").classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>
