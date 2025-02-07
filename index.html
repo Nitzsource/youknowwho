@@ -143,7 +143,9 @@
     <div class="container">
         <h1>🌹 Happy Rose Day, My Love! 🌹</h1>
         <p>There's a secret message hidden in Morse code. Can you decode it? ❤️</p>
-        <div class="morse-code">.... . .-.. .-.. --- / -- -.-- / .-.. --- ...- . -.-.-- / - .... . / -. . -..- - / - .... .. -. --. / .. ... / .... .. -.. -.. . -. / .. -. / -.. .. --. .. - .- .-.. ._. --- ... . .-.-.-</div>
+        <div class="morse-code">
+        .... . .-.. .-.. --- / -- -.-- / .-.. --- ...- . -.-.-- / - .... . / -. . -..- - / - .... .. -. --. / .. ... / .... .. -.. -.. . -. / .. -. / -.. .. --. .. - .- .-.. ._. --- ... . .-.-.-
+        </div>
         <button onclick="startAnimation()">Click to Reveal the Surprise 🎁</button>
         <br>
 
@@ -158,21 +160,32 @@
         <p id="hiddenMessage" class="hidden-message">You are the most beautiful rose in my life! 🌹💖</p>
     </div>
 
-    <script>
-        function startAnimation() {
-            console.log("Animation started"); // Debugging
-            const character = document.getElementById("character");
-            character.classList.add("walk-in");
+   <script>
+    function startAnimation() {
+        console.log("Button clicked! Animation starting...");
+        
+        const character = document.getElementById("character");
+        const roseContainer = document.getElementById("roseContainer");
+        const hiddenMessage = document.getElementById("hiddenMessage");
 
-            setTimeout(() => {
-                document.getElementById("roseContainer").classList.add("visible");
-                character.classList.add("arm-move");
-
-                setTimeout(() => {
-                    document.getElementById("hiddenMessage").style.display = "block";
-                }, 2000);
-            }, 3000);
+        if (!character || !roseContainer || !hiddenMessage) {
+            console.error("One or more elements are missing from the page!");
+            return;
         }
-    </script>
+
+        character.classList.add("walk-in");
+        
+        setTimeout(() => {
+            console.log("Character reached the center...");
+            roseContainer.classList.add("visible");
+            character.classList.add("arm-move");
+            
+            setTimeout(() => {
+                console.log("Revealing hidden message...");
+                hiddenMessage.style.display = "block";
+            }, 2000);
+        }, 3000);
+    }
+</script>
 </body>
 </html>
