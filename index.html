@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌹 A Special Chat for You 🌹</title>
+    <title>🤗 Happy Hug Day 🤗</title>
+    <link rel="stylesheet" href="style.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
             text-align: center;
             background: linear-gradient(to right, #ff758c, #ff7eb3);
             color: white;
@@ -16,7 +19,7 @@
             align-items: center;
             height: 100vh;
             overflow: hidden;
-            flex-direction: column;
+            position: relative;
         }
         .container {
             background: rgba(255, 255, 255, 0.2);
@@ -26,10 +29,49 @@
             max-width: 90%;
             backdrop-filter: blur(10px);
         }
-        .chat-button {
+        .hidden-message {
+            font-size: 20px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            color: #333;
+            margin-top: 15px;
+            display: none;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .characters {
+            position: relative;
+            width: 250px;
+            margin: 20px auto;
+        }
+        .character {
+            position: absolute;
+            width: 120px;
+            transition: all 2s ease-in-out;
+        }
+        .character.left {
+            left: 0;
+            transform: translateX(-50px);
+        }
+        .character.right {
+            right: 0;
+            transform: translateX(50px);
+        }
+        .characters.hugging .character.left {
+            transform: translateX(20px);
+        }
+        .characters.hugging .character.right {
+            transform: translateX(-20px);
+        }
+        button {
             background: #ff4d4d;
             color: white;
-            padding: 15px 30px;
+            padding: 10px 20px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -37,33 +79,30 @@
             margin-top: 15px;
             transition: all 0.3s ease;
         }
-        .chat-button:hover {
+        button:hover {
             background: #cc0000;
             transform: scale(1.1);
-        }
-        iframe {
-            width: 90%;
-            height: 80vh;
-            border: none;
-            display: none;
-            border-radius: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="container" id="welcomeContainer">
-        <h1>🌹 A Special Chat Just for You! 🌹</h1>
-        <p>Hey love, I made something just for you. Click below to start chatting! 💖</p>
-        <button class="chat-button" onclick="startChat()">Open Chat 💬</button>
+    <div class="container">
+        <h1>🤗 Happy Hug Day, My Love! 🤗</h1>
+        <p>Sometimes words aren't enough, so here's a hug from me to you! 💖</p>
+        <div class="characters" id="characters">
+            <img class="character left" src="https://via.placeholder.com/120" alt="Nitesh">
+            <img class="character right" src="https://via.placeholder.com/120" alt="Siya">
+        </div>
+        <button onclick="giveHug()">Click for a Warm Hug 🤗</button>
+        <p id="hiddenMessage" class="hidden-message">A virtual hug for you, my love! You mean the world to me. 💖🤗</p>
     </div>
 
-    <!-- Chatbot Embed -->
-    <iframe id="chatFrame" src="https://character.ai/chat/QRx5V4CajAHxPCV71N6T6J2rF1XXSeGIckWGjcQjvJs"></iframe>
-
     <script>
-        function startChat() {
-            document.getElementById('welcomeContainer').style.display = 'none';
-            document.getElementById('chatFrame').style.display = 'block';
+        function giveHug() {
+            document.getElementById("characters").classList.add("hugging");
+            setTimeout(() => {
+                document.getElementById("hiddenMessage").style.display = "block";
+            }, 2000);
         }
     </script>
 </body>
